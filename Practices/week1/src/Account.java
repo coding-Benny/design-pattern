@@ -6,11 +6,8 @@ public class Account {
     public Account(String owner, int balance) {
         this.owner = owner;
         this.balance = balance;
-        /*
-         * Account 인스턴스가 생성될 때마다
-         * 새로운 Logger 인스턴스를 생성하는 문제점을 해결하기 위해
-         * this.myLogger = new Logger(); 삭제
-         */
+        /* 하나의 인스턴스만을 가지도록 설계 */
+        this.myLogger = Logger.getInstance();
     }
 
     public String getOwner() { return owner; }
@@ -26,10 +23,5 @@ public class Account {
             myLogger.log("owner: " + this.getOwner() + " withdraw " + money);
             balance -= money;
         }
-    }
-
-    /* 모든 Account 인스턴스가 하나의 Logger 인스턴스를 공유하도록 설계 */
-    public void setMyLogger(Logger myLogger) {
-        this.myLogger = myLogger;
     }
 }

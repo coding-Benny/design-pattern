@@ -7,6 +7,7 @@ import java.util.Date;
 public class Logger {
     private final String LOGFILE = "log.txt";
     private PrintWriter writer;
+    private static Logger instance = new Logger();
 
     public Logger() {
         try {
@@ -14,6 +15,8 @@ public class Logger {
             writer = new PrintWriter(fw, true);
         } catch (IOException e) { }
     }
+
+    public static Logger getInstance() { return instance; }
 
     public void log (String message) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
