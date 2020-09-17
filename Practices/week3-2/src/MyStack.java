@@ -1,11 +1,18 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class MyStack extends ArrayList<String> {
+public class MyStack {
+    private List<String> arList;
+
+    public MyStack() {
+        this.arList = new ArrayList<String>();
+    }
+
     public void push(String item) {
-        add(item);
+        arList.add(item);
     }
 
     public String pop() {
-        return remove(size() - 1);
+        return arList.remove(arList.size() - 1);
     }
 }

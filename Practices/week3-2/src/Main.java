@@ -3,7 +3,6 @@ public class Main {
         MyStack stack = new MyStack();
         stack.push("insang1");
         stack.push("insang2");
-        stack.set(0, "insang3");
         System.out.println(stack.pop());
         System.out.println(stack.pop());
     }
