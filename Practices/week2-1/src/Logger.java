@@ -16,14 +16,16 @@ public class Logger {
         } catch (IOException e) { }
     }
 
+    /*
+     * Eager Initialization은 필요하지 않은 경우에도 인스턴스를 생성하였으나
+     * Lazy Holder를 사용하면 getInstance()를 호출해야 생성됨
+     */
+    private static  class LazyHolder {
+        public static final Logger INSTANCE = new Logger();
+    }
+
     public static synchronized Logger getInstance() {
-        if (instance == null) {
-            synchronized (Logger.class) {
-                if (instance == null)
-                    instance = new Logger();
-            }
-        }
-        return instance;
+        return LazyHolder.INSTANCE;
     }
 
     public void log (String message) {
