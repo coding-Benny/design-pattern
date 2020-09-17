@@ -17,7 +17,12 @@ public class Logger {
     }
 
     public static synchronized Logger getInstance() {
-        if (instance == null) instance = new Logger();
+        if (instance == null) {
+            synchronized (Logger.class) {
+                if (instance == null)
+                    instance = new Logger();
+            }
+        }
         return instance;
     }
 
