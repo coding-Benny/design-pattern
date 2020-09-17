@@ -16,7 +16,7 @@ public class Logger {
         } catch (IOException e) { }
     }
 
-    public static Logger getInstance() {
+    public static synchronized Logger getInstance() {
         if (instance == null) instance = new Logger();
         return instance;
     }
