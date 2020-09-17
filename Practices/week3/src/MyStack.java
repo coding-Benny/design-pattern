@@ -1,20 +1,20 @@
+import java.util.ArrayList;
+
 public class MyStack {
-    public int top;
-    public int[] itemArray;
-    public int stackSize;
+    private ArrayList<Integer> items;
+    private int stackSize;
 
     public MyStack(int stackSize) {
         this.stackSize = stackSize;
-        itemArray = new int[stackSize];
-        top = -1;
+        items = new ArrayList<Integer>(stackSize);
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return items.isEmpty();
     }
 
     public boolean isFull() {
-        return top == this.stackSize - 1;
+        return items.size() >= this.stackSize;
     }
 
     public void push(int item) {
@@ -22,7 +22,7 @@ public class MyStack {
             System.out.println("stack is full");
         }
         else {
-            itemArray[++top] = item;
+            items.add(new Integer(item));
         }
     }
 
@@ -32,7 +32,7 @@ public class MyStack {
             return -1;
         }
         else {
-            return itemArray[top--];
+            return items.remove(items.size() - 1);
         }
     }
 }
