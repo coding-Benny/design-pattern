@@ -7,9 +7,9 @@ import java.util.Date;
 public class Logger {
     private final String LOGFILE = "log.txt";
     private PrintWriter writer;
-    private static Logger instance;
+    private volatile static Logger instance;
 
-    public Logger() {
+    private Logger() {
         try {
             FileWriter fw = new FileWriter(LOGFILE);
             writer = new PrintWriter(fw, true);
