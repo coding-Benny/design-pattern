@@ -22,6 +22,8 @@ public class Logger {
     }
 
     public void log (String message) {
+        /* 다중 스레드 환경에서는 인스턴스가 여러 개 생기는 문제점 발생 */
+        System.out.println(this.toString());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
         writer.println(formatter.format(date) + " : " + message);
