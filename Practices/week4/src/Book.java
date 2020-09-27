@@ -6,33 +6,73 @@ public class Book {
     private int pages;
     private String category;
 
-    /* JavaBeans Pattern : setter method로 속성 값을 설정하여 가독성은 향상되나 immutable object를 만들 수 없음 */
-    public Book(Long id, String isbn) {
-        this.id = id;
-        this.isbn = isbn;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public int getPages() {
+        return pages;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public static class BookBuilder {
+        private Long id; // 필수
+        private String isbn; // 필수
+        private String title;
+        private String author;
+        private int pages;
+        private String category;
+
+        /* Builder Pattern : 가독성이 좋고 immutable 객체를 생성할 수 있으나 코드 양이 상당히 증가함 */
+        public BookBuilder(Long id, String isbn) {
+            this.id = id;
+            this.isbn = isbn;
+        }
+
+        public BookBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public BookBuilder author(String author) {
+            this.author = author;
+            return this;
+        }
+
+        public BookBuilder pages(int pages) {
+            this.pages = pages;
+            return this;
+        }
+
+        public BookBuilder category(String category) {
+            this.category = category;
+            return this;
+        }
+
+        public Book build() {
+            Book book = new Book();
+            book.id = this.id;
+            book.isbn = this.isbn;
+            book.author = this.author;
+            book.title = this.title;
+            book.pages = this.pages;
+            book.category = this.category;
+            return book;
+        }
     }
 }
