@@ -1,9 +1,9 @@
 public class Button {
-    private Lamp theLamp;
-    public Button(Lamp theLamp) {
-        this.theLamp = theLamp;
+    private Alarm theAlarm;
+    public Button(Alarm theAlarm) {
+        this.theAlarm = theAlarm;
     }
     public void pressed() {
-        theLamp.turnOn();
+        theAlarm.start();
     }
 }
