@@ -1,15 +1,17 @@
 public class TwoButtonController {
-    private TV tv;
+    private Command command1;
+    private Command command2;
 
-    public TwoButtonController(TV tv) {
-        this.tv = tv;
+    public TwoButtonController(Command command1, Command command2) {
+        this.command1 = command1;
+        this.command2 = command2;
     }
 
     public void button1Pressed() {
-        tv.power();
+        command1.execute();
     }
 
     public void button2Pressed() {
-        tv.mute();
+        command2.execute();
     }
 }

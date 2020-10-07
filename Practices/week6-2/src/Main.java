@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args) {
         TV tv = new TV();
-        TwoButtonController rc = new TwoButtonController(tv);
+        Command powerCmd = new PowerCommand(tv);
+        Command muteCmd = new MuteCommand(tv);
 
-        rc.button1Pressed();
-        rc.button2Pressed();
+        TwoButtonController rc = new TwoButtonController(muteCmd, powerCmd);
 
         rc.button1Pressed();
         rc.button2Pressed();
