@@ -2,11 +2,17 @@ public class Main {
     public static void main(String[] args) {
         Alarm alarm = new Alarm();
         Lamp lamp = new Lamp();
-        Button button = new Button(lamp, alarm);
-        button.setCurrentMode(Mode.LAMP);
+        Command alarmStartCommand = new AlarmStartcommand(alarm);
+        Button button = new Button();
+        button.setCommand(alarmStartCommand);
         button.pressed();
 
-        button.setCurrentMode(Mode.ALARM);
+        Command lampOnCommand = new LampTurnOnCommand(lamp);
+        button.setCommand(lampOnCommand);
+        button.pressed();
+
+        Command tvOnCommand = new TvOnCommand(new TV());
+        button.setCommand(tvOnCommand);
         button.pressed();
     }
 }
