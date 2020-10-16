@@ -1,10 +1,10 @@
 import java.util.Collections;
 import java.util.List;
 
-public class MinMaxView implements Observer {
+public class SortView implements Observer {
     private ScoreRecord scoreRecord;
 
-    public MinMaxView(ScoreRecord scoreRecord) {
+    public SortView(ScoreRecord scoreRecord) {
         this.scoreRecord = scoreRecord;
     }
 
@@ -14,9 +14,10 @@ public class MinMaxView implements Observer {
     }
 
     private void displayScores(List<Integer> record) {
-        int min = Collections.min(record);
-        int max = Collections.max(record);
-
-        System.out.println("Min " + min + " Max " + max);
+        System.out.println("Sorted View");
+        Collections.sort(record);
+        for (Integer score : record) {
+            System.out.println(score);
+        }
     }
 }
