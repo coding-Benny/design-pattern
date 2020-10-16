@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         ScoreRecord scoreRecord = new ScoreRecord();
-        DataSheetView dataSheetView = new DataSheetView(scoreRecord, 3);
-        scoreRecord.setDataSheetView(dataSheetView);
+        MinMaxView minMaxView = new MinMaxView(scoreRecord);
+        scoreRecord.setMinMaxView(minMaxView);
 
         for (int index = 1; index <= 5; index++) {
             int score = index * 10;
